@@ -1,0 +1,27 @@
+{
+  "name": "shibe-online.js",
+  "version": "1.0.0",
+  "description": "shibe-online.js utilizes the shibe-online API to return pictures of dogs, cats and birds",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MattPlays/shibe-online.js.git"
+  },
+  "keywords": [
+    "shibe",
+    "dogs",
+    "cats",
+    "birds",
+    "API"
+  ],
+  "author": "MattPlays (https://github.com/MattPlays/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MattPlays/shibe-online.js/issues"
+  },
+  "homepage": "https://github.com/MattPlays/shibe-online.js#readme",
+  "dependencies": {
+    "node-fetch": "^2.6.0"
+  }
+}
