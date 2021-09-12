@@ -1,6 +1,6 @@
 {
   "name": "shibe-online.js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "shibe-online.js utilizes the shibe-online API to return pictures of dogs, cats and birds",
   "main": "index.js",
   "types": "index.d.ts",
