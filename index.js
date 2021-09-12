@@ -1,9 +1,22 @@
-const fetch = require("node-fetch");
-const paths = {
-    shibes: "http://shibe.online/api/shibes",
-    cats: "http://shibe.online/api/cats",
-    birds: "http://shibe.online/api/birds"
-}
+const axios = require("axios").default;
+const shibes = axios.create({
+    baseURL: "http://shibe.online/api/shibes",
+    headers: {
+        "Accept": "application/json"
+    }
+});
+const cats = axios.create({
+    baseURL: "http://shibe.online/api/cats",
+    headers: {
+        "Accept": "application/json"
+    }
+});
+const birds = axios.create({
+    baseURL: "http://shibe.online/api/birds",
+    headers: {
+        "Accept": "application/json"
+    }
+});
 module.exports = {
     /**
      * @param {number} [count] - The number of images to be returned. Default is 1.
@@ -14,16 +27,14 @@ module.exports = {
      */
     async GetShibe(count = 1) {
         if(count < 1 || count > 100) throw new Error(`[ShibeError]: count must be an integer between 1-100`)
-        const url = `${paths.shibes}?count=${count}`;
-        const options = {
-            "method": "GET",
-            "headers": {
-                "Accept": "application/json"
+        return shibes({
+            method: "GET",
+            params: {
+                "count": count
             }
-        }
-        return fetch(url, options).then(data => data.json()).then((data) => {
-            return (count === 1) ? data[0]: data;
-        }).catch((err) => {throw new Error(err)});
+        }).then(({data}) => {
+            return (count === 1) ? data[0] : data;
+        }).catch((err) => {throw new Error(err)})
     },
     /**
      * @param {number} [count] - The number of images to be returned. Default is 1.
@@ -34,16 +45,14 @@ module.exports = {
      */
     async GetCat(count = 1) {
         if(count < 1 || count > 100) throw new Error(`[ShibeError]: count must be an integer between 1-100`)
-        const url = `${paths.cats}?count=${count}`;
-        const options = {
-            "method": "GET",
-            "headers": {
-                "Accept": "application/json"
+        return cats({
+            method: "GET",
+            params: {
+                "count": count
             }
-        }
-        return fetch(url, options).then(data => data.json()).then((data) => {
-            return (count === 1) ? data[0]: data;
-        }).catch((err) => {throw new Error(err)});
+        }).then(({data}) => {
+            return (count === 1) ? data[0] : data;
+        }).catch((err) => {throw new Error(err)})
     },
     /**
      * @param {number} [count] - The number of images to be returned. Default is 1.
@@ -54,15 +63,13 @@ module.exports = {
      */
     async GetBird(count = 1) {
         if(count < 1 || count > 100) throw new Error(`[ShibeError]: count must be an integer between 1-100`)
-        const url = `${paths.birds}?count=${count}`;
-        const options = {
-            "method": "GET",
-            "headers": {
-                "Accept": "application/json"
+        return birds({
+            method: "GET",
+            params: {
+                "count": count
             }
-        }
-        return fetch(url, options).then(data => data.json()).then((data) => {
-            return (count === 1) ? data[0]: data;
-        }).catch((err) => {throw new Error(err)});
+        }).then(({data}) => {
+            return (count === 1) ? data[0] : data;
+        }).catch((err) => {throw new Error(err)})
     }
 }

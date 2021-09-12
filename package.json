@@ -22,6 +22,6 @@
   },
   "homepage": "https://github.com/MattPlays/shibe-online.js#readme",
   "dependencies": {
-    "node-fetch": "^2.6.0"
+    "axios": "^0.21.4"
   }
 }
